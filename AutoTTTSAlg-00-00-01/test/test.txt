@@ -1,0 +1,53 @@
+#include "$ROOTIOROOT/share/jobOptions_ReadRec.txt"
+#include "$MAGNETICFIELDROOT/share/MagneticField.txt"
+#include "$RUNEVENTNUMBERALGROOT/share/jobOptions_RunEventNumber.txt"
+#include "$ABSCORROOT/share/jobOptions_AbsCor.txt"
+#include "$VERTEXFITROOT/share/jobOptions_VertexDbSvc.txt"
+#include "$PI0ETATOGGRECALGROOT/share/jobOptions_Pi0EtaToGGRec.txt"
+#include "$VEEVERTEXALGROOT/share/jobOptions_veeVertex.txt"
+#include "$AUTOTTTSALGROOT/share/jobOptions.txt"
+BeamInfoSvc.UseCbE = true;
+
+McDecayModeSvc.NoTracingList = { 321, -321, 211, -211, 310 };
+AutoTTTSAlg.InfoLevel = 0;
+
+VeeVertex.LambdaReconstruction = false;
+VeeVertex.KShortReconstruction = true;
+AutoTTTSAlg.UseMatch = false;
+AutoTTTSAlg.Mother = 443;
+AutoTTTSAlg.Ecm = 3.097;
+AutoTTTSAlg.MinChargedTracks = 2;
+AutoTTTSAlg.ReadBeamE = false;
+AutoTTTSAlg.TagFid = {-3122};
+AutoTTTSAlg.SigFid = { 
+                     3112, 0, 
+                     3212, 0,
+                     3312, 0,
+                     3322, 0,
+                     3334 };
+
+PrimaryProtonSelector.RxyCut = 10.0;
+PrimaryProtonSelector.Vz0Cut = 20.0;
+PrimaryProtonSelector.UsePIDTofCorr = true;
+
+// 0.587 -- 0.511
+SignalCandidate.MinMass = 1.100;
+SignalCandidate.MaxMass = 1.130;
+SignalCandidate.MinRecMass = 1.00;
+SignalCandidate.MaxRecMass = 1.20;
+
+// Number of events to be processed (default is 10)
+ApplicationMgr.EvtMax = 30;
+
+// Set output level threshold (2=DEBUG, 3=INFO, 4=WARNING, 5=ERROR, 6=FATAL )
+MessageSvc.OutputLevel = 6;
+
+ApplicationMgr.HistogramPersistency = "ROOT";
+
+EventCnvSvc.digiRootInputFile = {
+    "/scratchfs/bes/jyzhang/JPsi2Lbd/toyMC/J2LL/Helicity/12_16_2018/dst/dst_0500.dst"
+};
+
+NTupleSvc.output={
+  "FILE  DATAFILE='1.root' OPT='new' TYP='ROOT' "
+};

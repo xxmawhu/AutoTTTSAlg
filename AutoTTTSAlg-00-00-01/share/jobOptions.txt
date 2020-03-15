@@ -1,0 +1,34 @@
+#include "$ABSCORROOT/share/jobOptions_AbsCor.txt"
+#include "$BESSTDSELECTORROOT/share/jobOptions.txt"
+#include "$PHOTONCONVERSVCROOT/share/jobOptions.txt"
+#include "$MCTRUTHINFOROOT/share/jobOptions.txt"
+#include "$MCDECAYMODESVCROOT/share/GetDecayMode.txt"
+// pi0 and eta
+#include "$PI0ETATOGGRECALGROOT/share/jobOptions_Pi0EtaToGGRec.txt"
+Pi0EtaToGGRecAlg.PhotonInBarrelOrEndcap = true;
+Pi0EtaToGGRecAlg.PhotonApplyTimeCut = true;
+Pi0EtaToGGRecAlg.RejectBothInEndcap = true;
+
+ApplicationMgr.DLLs += {"AutoTTTSAlg"};
+ApplicationMgr.TopAlg += { "AutoTTTSAlg" };
+
+ApplicationMgr.DLLs += {"MCTruthMatchSvc" };
+ApplicationMgr.DLLs += {"BeamInfoSvc" };
+ApplicationMgr.ExtSvc += {"McDecayModeSvc/McDecayModeSvc"};
+ApplicationMgr.ExtSvc += {"MCTruthInfo/MCTruthInfo"};
+ApplicationMgr.ExtSvc += {"BeamInfoSvc/BeamInfoSvc"};
+MCTruthInfo.Mother = 443;
+BeamInfoSvc.UseCbE = false;
+
+VeeVertex.LambdaReconstruction = false;
+VeeVertex.KShortReconstruction = true;
+
+AutoTTTSAlg.InfoLevel = 0;
+// 0: no message
+// 1: FillInfo into tuple
+// 2: Search for signal
+// 3: Search for tag
+// 4: get the element particles list
+// 5: number of each kind of particle
+// 6: number of tracks, and showers
+
