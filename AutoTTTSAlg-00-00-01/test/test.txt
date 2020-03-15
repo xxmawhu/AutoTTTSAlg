@@ -19,12 +19,7 @@ AutoTTTSAlg.Ecm = 3.097;
 AutoTTTSAlg.MinChargedTracks = 2;
 AutoTTTSAlg.ReadBeamE = false;
 AutoTTTSAlg.TagFid = {-3122};
-AutoTTTSAlg.SigFid = { 
-                     3112, 0, 
-                     3212, 0,
-                     3312, 0,
-                     3322, 0,
-                     3334 };
+AutoTTTSAlg.SigFid = {3122}; 
 
 PrimaryProtonSelector.RxyCut = 10.0;
 PrimaryProtonSelector.Vz0Cut = 20.0;
